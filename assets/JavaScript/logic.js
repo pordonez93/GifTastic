@@ -10,19 +10,21 @@ $(document).ready(function(){
             url: queryURL, 
             method: "GET"
         }).done(function(response) {
+            console.log(response);
+            var results=response.data;
             for(var j = 0; j < limit; j++) {    
                 var displayDiv = $("<div>");
                 displayDiv.addClass("holder");
             
                 var image = $("<img>");
-                image.attr("src", response.data[j].images.original_still.url);
-                image.attr("data-still", response.data[j].images.original_still.url);
-                image.attr("data-animate", response.data[j].images.original.url);
+                image.attr("src", results[j].images.original_still.url);
+                image.attr("data-still", results[j].images.original_still.url);
+                image.attr("data-animate", results[j].images.original.url);
                 image.attr("data-state", "still");
                 image.attr("class", "gif");
                 displayDiv.append(image);
 
-                var rating = response.data[j].rating;
+                var rating = results[j].rating;
                 var pRating = $("<p>").text("Rating: " + rating);
                 displayDiv.append(pRating)
                 $("#display-images").append(displayDiv);
@@ -33,7 +35,7 @@ $(document).ready(function(){
         $("#display-buttons").empty();
 
         for (var i = 0; i < displayedButtons.length; i++){
-            var newButton = $("<button>") 
+            var newButton = $("<button>");
             newButton.attr("class", "btn btn-default");
             newButton.attr("id", "input")  
             newButton.attr("data-name", displayedButtons[i]); 
@@ -54,14 +56,13 @@ $(document).ready(function(){
             $(this).attr("data-state", "still");
         }   
     }
-    $("#submitPress").on("click", function(){
-
+    $("#submit").on("click", function(event){
+        event.preventDefault();
         var input = $("#user-input").val().trim();
-        form.reset();
-        displayedButtons.push(input);   
+        displayedButtons.push(input);
         renderButtons();
-        return false;
     })
+
     renderButtons();
     $(document).on("click", "#input", displayImage);
     $(document).on("click", ".gif", imageState);
