@@ -1,0 +1,29 @@
+body{
+    background-image: url("../images/background.jpg");
+    font-family: "Georgia, Times, Times New Roman, serif";
+}
+img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.holder{
+    float: left;
+}
+div, form{
+    margin: 5px;
+}
+
+.btn.btn-default, .jumbotron.jumbotron-fluid{
+    background: #87a7b8;
+    margin: 5px;
+}
+p, #input, .display-4, #submit{
+    background: #87a7b8;
+    text-align: center;
+    color: white;
+
+}
+h1{
+    text-align: center;
+}

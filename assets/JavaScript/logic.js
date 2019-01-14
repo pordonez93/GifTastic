@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var displayedButtons = ["Beach", "Dolphins", "Coral Reef", "Fish"];
+    var displayedButtons = ["Mermaids", "Dolphins", "Coral Reef", "Fish", "Turtle"];
     function displayImage(){
         $("#display-images").empty();
         var input = $(this).attr("data-name");
